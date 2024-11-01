@@ -231,4 +231,4 @@ export default function Home() {
     </>
   );
 }
-// updated: 最終バス後のメッセージ表示
+// updated: バス時刻表のカードデザイン改善
