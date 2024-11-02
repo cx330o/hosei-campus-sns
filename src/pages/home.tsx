@@ -231,4 +231,4 @@ export default function Home() {
     </>
   );
 }
-// updated: バス時刻表のカードデザイン改善
+// updated: 全時刻表の一覧表示
