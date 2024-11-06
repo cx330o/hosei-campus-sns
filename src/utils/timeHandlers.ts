@@ -17,4 +17,4 @@ export {
 export { findNextBuses, getSpecialDateConfig } from "./busUtils"
 
 export { findNextTrains } from "./trainUtils"
-// updated: 深夜0時を跨ぐバグ修正
+// updated: iOS Safariの時刻表示ズレ修正
