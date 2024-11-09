@@ -86,4 +86,4 @@ export default defineConfig({
   },
 
 })
-// updated: PWA: manifest.json×·¼Ó
+// updated: PWA: Service Worker
