@@ -45,3 +45,4 @@ const Countdown = ({ now, targetDate, labelBefore, labelAfter }: Props) => {
 };
 
 export default Countdown;
+// updated: JSDoc¥³¥á¥ó¥È×·¼Ó
