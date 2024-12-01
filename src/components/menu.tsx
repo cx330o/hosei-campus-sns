@@ -15,7 +15,7 @@ const Menu = ({ locale, onLocaleChange, labels }: MenuProps) => {
     <div>
       <Sheet>
         <SheetTrigger asChild>
-          <button className="bg-white/15 dark:bg-white/10 backdrop-blur-md shadow-lg border border-white/20 m-6 rounded-2xl w-16 h-16 text-white transition-all hover:bg-white/25" aria-label="ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’é–‹ã"><ListIcon className='mx-auto' size={24} /></button>
+          <button className="bg-white/15 dark:bg-white/10 backdrop-blur-md shadow-lg border border-white/20 m-6 rounded-2xl w-16 h-16 text-white transition-all hover:bg-white/25" aria-label="ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’é–‹ã?><ListIcon className='mx-auto' size={24} /></button>
         </SheetTrigger>
         <SheetContent className="bg-black/30 dark:bg-zinc-950/30 border-l border-l-gray-600" side='right'>
           <SheetTitle className="shadow-xl mt-3 text-white text-xl text-center">{labels.title}</SheetTitle>
@@ -55,3 +55,4 @@ const Menu = ({ locale, onLocaleChange, labels }: MenuProps) => {
 }
 
 export default Menu
+// updated: ¥À©`¥¯¥â©`¥ÉÇÐÌæ¥Ü¥¿¥ó
