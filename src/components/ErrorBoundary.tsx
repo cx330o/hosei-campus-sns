@@ -32,7 +32,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
             role="alert"
             className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-zinc-950 text-black dark:text-white gap-4 p-4"
           >
-            <p>アプリケーションでエラーが発生しました。</p>
+            <p>アプリケーションでエラーが発生しました�?/p>
             {this.state.error && (
               <pre className="bg-red-100 dark:bg-red-900/30 p-4 rounded text-sm max-w-xl overflow-auto text-red-800 dark:text-red-300">
                 {this.state.error.message}
@@ -44,7 +44,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
               onClick={() => window.location.reload()}
               className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 min-w-[44px] min-h-[44px]"
             >
-              再読み込み
+              再読み込�?
             </button>
           </div>
         )
@@ -55,3 +55,4 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 }
 
 export default ErrorBoundary;
+// updated: ����`�r�Υե��`��Хå�UI����
