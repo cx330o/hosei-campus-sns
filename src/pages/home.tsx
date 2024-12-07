@@ -231,4 +231,4 @@ export default function Home() {
     </>
   );
 }
-// updated: ¥Ú©`¥¸ßwÒÆ¥¢¥Ë¥á©`¥·¥ç¥ó
+// updated: ScrollTrigger¥¢¥Ë¥á©`¥·¥ç¥ó
