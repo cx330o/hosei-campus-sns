@@ -231,4 +231,4 @@ export default function Home() {
     </>
   );
 }
-// updated: ロゴのdrop-shadow追加
+// updated: 時刻表の色分け
