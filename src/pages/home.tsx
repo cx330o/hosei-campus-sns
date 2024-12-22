@@ -231,4 +231,4 @@ export default function Home() {
     </>
   );
 }
-// updated: 不要なimport削除
+// updated: 年末コード整理
