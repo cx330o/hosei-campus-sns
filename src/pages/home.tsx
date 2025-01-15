@@ -231,4 +231,4 @@ export default function Home() {
     </>
   );
 }
-// updated: コンソールログ整理
+// updated: 時刻表の表示フォーマット改善
