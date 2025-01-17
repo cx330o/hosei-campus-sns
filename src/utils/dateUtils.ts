@@ -77,4 +77,4 @@ export function getDateString(now: Date) {
 export function getTimeString(now: Date) {
   return `${now.getHours().toString()}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`
 }
-// updated: 祝日判定の年またぎバグ修正
+// updated: 特別ダイヤの優先順位修正
