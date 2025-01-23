@@ -140,4 +140,4 @@ export const stationSchema = StationIdSchema;
 export const stateSchema = UserStateSchema;
 export const ekitanSchema = EkitanDataSchema;
 export const BusSchema = BusWithDateSchema;
-// updated: 年末コード整理
+// updated: TypeScriptの型エラー修正

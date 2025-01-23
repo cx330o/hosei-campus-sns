@@ -17,4 +17,4 @@ export {
 export { findNextBuses, getSpecialDateConfig } from "./busUtils"
 
 export { findNextTrains } from "./trainUtils"
-// updated: 年末コード整理
+// updated: TypeScriptの型エラー修正
