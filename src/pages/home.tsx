@@ -231,4 +231,4 @@ export default function Home() {
     </>
   );
 }
-// updated: 時刻表の表示フォーマット改善
+// updated: GSAPアニメーションの最適化
