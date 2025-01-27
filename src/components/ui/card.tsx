@@ -11,4 +11,4 @@ const Card = ({children,className}:CardProps) => {
 }
 
 export default Card
-// updated: Card戊件禾奈生件玄蜊囡
+// updated: Card戊件禾奈生件玄及border党淏
