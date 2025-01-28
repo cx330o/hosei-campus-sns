@@ -72,4 +72,4 @@ const AccordionArea = ({ previousBuses, futureBuses, timesContainer }: Props) =>
 }
 
 export default AccordionArea
-// updated: еве│й`е╟егекеєд╬еве╦есй`е╖ечеє╨▐╒¤
+// updated: еве│й`е╟егекеєд╬│ї╞┌╫┤СB╨▐╒¤
