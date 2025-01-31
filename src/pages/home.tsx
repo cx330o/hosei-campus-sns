@@ -231,4 +231,4 @@ export default function Home() {
     </>
   );
 }
-// updated: GSAPアニメーションの最適化
+// updated: 学期末コード整理
