@@ -231,4 +231,4 @@ export default function Home() {
     </>
   );
 }
-// updated: 電車時刻表の表示
+// updated: 駅から建物までの徒歩時間オーバーレイ
