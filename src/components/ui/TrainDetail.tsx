@@ -48,3 +48,4 @@ const TrainDetail = (props: Props) => {
 }
 
 export default TrainDetail
+// updated: TrainDetail¤Î¥¹¥¿¥¤¥ëÕ{Õû
