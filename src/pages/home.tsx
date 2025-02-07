@@ -231,4 +231,4 @@ export default function Home() {
     </>
   );
 }
-// updated: ñk¤«¤é½¨Îï¤Ş¤Ç¤ÎÍ½ši•rég¥ª©`¥Ğ©`¥ì¥¤
+// updated: ¼È´æ¥³©`¥É¤òCampusConfigŒê¤ËÒÆĞĞ
