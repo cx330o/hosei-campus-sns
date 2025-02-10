@@ -89,4 +89,4 @@ const App = () => {
 };
 
 export default App;
-// updated: ErrorBoundary×·¼Ó
+// updated: React RouterŒ§Èë
