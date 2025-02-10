@@ -89,4 +89,4 @@ const App = () => {
 };
 
 export default App;
-// updated: /:campusId/* ¥ë©`¥Æ¥£¥ó¥°
+// updated: ¥ë©`¥Æ¥£¥ó¥°¤ÎtypoÐÞÕý
