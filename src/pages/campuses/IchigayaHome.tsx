@@ -62,7 +62,7 @@ export default function IchigayaHome() {
   }, [state.station, isLoading]);
 
   const stationNameMap: Record<string, string> = Object.fromEntries(
-    campus.stations.map(s => [s.id, s.nameJa + "駅"])
+    campus.stations.map(s => [s.id, s.nameJa + "�?])
   );
   const walkMinutesMap: Record<string, number> = Object.fromEntries(
     campus.stations.map(s => [s.id, s.walkMinutes])
@@ -73,7 +73,7 @@ export default function IchigayaHome() {
 
   const nextTrains = useMemo<TrainWithDate[]>(() => {
     if (!holidayData) return [];
-    return findNextTrains({ ekitanData, station: stationNameMap[state.station] ?? campus.stations[0].nameJa + "駅", holidayData, date: new Date(now) });
+    return findNextTrains({ ekitanData, station: stationNameMap[state.station] ?? campus.stations[0].nameJa + "�?, holidayData, date: new Date(now) });
   }, [holidayData, state.station, now]);
 
   const [nextTrain, ...restTrains] = nextTrains;
@@ -125,9 +125,9 @@ export default function IchigayaHome() {
           <HomeSkeleton />
         ) : (
         <div className="relative z-10 gap-4 grid mx-auto p-3 max-w-2xl touch-manipulation" ref={mainContainer}>
-          {/* 駅選択 */}
+          {/* 駅選�?*/}
           <div className="bg-white/30 dark:bg-white/5 backdrop-blur-lg shadow-lg shadow-pink-200/30 dark:shadow-pink-900/20 p-4 border border-pink-200/50 dark:border-pink-800/30 rounded-3xl">
-            <nav aria-label="駅選択">
+            <nav aria-label="駅選�?>
               <div className={`gap-3 grid grid-cols-${campus.stations.length} font-semibold text-base text-center`}>
                 {campus.stations.map(s => (
                   <button key={s.id} onClick={() => handleStationButtonClicked(s.id as StationId)}
@@ -148,7 +148,7 @@ export default function IchigayaHome() {
               </div>
               <div className="flex justify-center items-center gap-1 mt-2 text-pink-500/60 dark:text-pink-400/50 text-xs">
                 <MapPinIcon size={12} />
-                <span>キャンパスまで徒歩約{walkMinutesMap[state.station] ?? 7}分</span>
+                <span>キャンパスまで徒歩約{walkMinutesMap[state.station] ?? 7}�?/span>
               </div>
             </nav>
           </div>
@@ -186,10 +186,10 @@ export default function IchigayaHome() {
             </div>
           </div>
 
-          {/* リンク */}
+          {/* リン�?*/}
           <div className="gap-3 grid grid-cols-1 md:grid-cols-3">
-            <Link to="discount" className="block bg-gradient-to-r from-rose-400 to-pink-500 shadow-lg p-4 rounded-2xl min-h-[44px] font-bold text-white text-lg text-center transition-all hover:scale-[1.02]">🍽️ {t("home.discountLink")}</Link>
-            <Link to="tech" className="block bg-gradient-to-r from-purple-400 to-indigo-500 shadow-lg p-4 rounded-2xl min-h-[44px] font-bold text-white text-lg text-center transition-all hover:scale-[1.02]">⚡ {t("home.techLink")}</Link>
+            <Link to="discount" className="block bg-gradient-to-r from-rose-400 to-pink-500 shadow-lg p-4 rounded-2xl min-h-[44px] font-bold text-white text-lg text-center transition-all hover:scale-[1.02]">🍽�?{t("home.discountLink")}</Link>
+            <Link to="tech" className="block bg-gradient-to-r from-purple-400 to-indigo-500 shadow-lg p-4 rounded-2xl min-h-[44px] font-bold text-white text-lg text-center transition-all hover:scale-[1.02]">�?{t("home.techLink")}</Link>
             <Link to="campus" className="block bg-gradient-to-r from-teal-400 to-emerald-500 shadow-lg p-4 rounded-2xl min-h-[44px] font-bold text-white text-lg text-center transition-all hover:scale-[1.02]">🏫 {t("home.campusMap")}</Link>
           </div>
         </div>
@@ -201,3 +201,4 @@ export default function IchigayaHome() {
     </>
   );
 }
+// updated: �Х��ȥƩ`�ޥ���`���ԥ�ϵ��
