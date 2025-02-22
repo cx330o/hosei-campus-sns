@@ -189,4 +189,4 @@ export function t(locale: Locale, key: TranslationKey): string {
 }
 
 export default translations;
-// updated: ¥Ð¥¹?ëŠÜ‡évßB¤Î·­ÔU
+// updated: UIÒªËØ¤Î·­ÔU
