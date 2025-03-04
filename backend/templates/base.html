@@ -36,7 +36,7 @@
             </a>
             <div class="flex items-center gap-2 text-sm">
                 <div class="flex gap-0.5 text-xs">
-                    {% for code, label in [('ja','JP'),('en','EN'),('zh','ä¸­'),('ko','í•œ')] %}
+                    {% for code, label in [('ja','JP'),('en','EN'),('zh','ä¸?),('ko','í•?)] %}
                     <a href="{{ url_for('set_lang', lang_code=code) }}"
                        class="px-2 py-1 rounded-md transition-all {% if lang == code %}bg-orange-500 text-white{% else %}text-gray-500 hover:bg-gray-100 dark:hover:bg-zinc-800{% endif %}">{{ label }}</a>
                     {% endfor %}
@@ -112,3 +112,4 @@
     {% block scripts %}{% endblock %}
 </body>
 </html>
+# updated: Tailwind CDN×·¼Ó
