@@ -52,7 +52,7 @@
         <a href="{{ url_for('home', page=p) }}"
            class="px-3 py-2 rounded-xl text-sm transition-all {% if p == pagination.page %}bg-hosei text-white shadow-md shadow-orange-500/20{% else %}bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 hover:border-orange-300{% endif %}">{{ p }}</a>
         {% else %}
-        <span class="px-2 py-2 text-gray-400">â€¦</span>
+        <span class="px-2 py-2 text-gray-400">â€?/span>
         {% endif %}
     {% endfor %}
     {% if pagination.has_next %}
@@ -61,3 +61,4 @@
 </div>
 {% endif %}
 {% endblock %}
+# updated: Í¶¸åÒ»ÓE¤Î¥Ú©`¥¸¥Í©`¥·¥ç¥ó
