@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <div class="bg-white dark:bg-zinc-800/80 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-zinc-700/50">
+        <h1 class="text-2xl font-bold mb-2">{{ post.title }}</h1>
+        <div class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 mb-4">
+            <a href="{{ url_for('user', user_id=post.user_id) }}" class="text-blue-600 hover:underline">👤 {{ user.username }}</a>
+            <span>{{ post.created_at }}</span>
+        </div>
+        <div class="border-t border-gray-100 dark:border-zinc-700 pt-4">
+            <p class="whitespace-pre-wrap leading-relaxed">{{ post.full_content }}</p>
+        </div>
+    </div>
+    <div class="flex gap-3 mt-4">
+        <a href="{{ url_for('user', user_id=post.user_id) }}" class="bg-gray-100 dark:bg-zinc-700 px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-200 dark:hover:bg-zinc-600 transition-colors">{{ t('user_page') }}</a>
+        {% if post.user_id == session.get("user_id") or current_user.role == 'developer' %}
+        <form action="{{ url_for('delete', post_id=post.id) }}" method="post">
+            <button type="submit" class="bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 px-4 py-2 rounded-xl text-sm font-medium hover:bg-red-200 transition-colors">{{ t('delete') }}</button>
+        </form>
+        {% endif %}
+    </div>
+
+    <!-- Comments -->
+    <div class="mt-8">
+        <h2 class="font-bold text-lg mb-4">💬 {{ t('comments') }} ({{ comments|length }})</h2>
+        {% if comments|length == 0 %}
+        <div class="text-center py-8 text-gray-400"><p>{{ t('no_comments') }}</p></div>
+        {% else %}
+        <div class="space-y-3">
+            {% for c in comments %}
+            <div class="bg-white dark:bg-zinc-800/80 rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-zinc-700/50">
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-0.5">{{ c.user.username[0]|upper }}</div>
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <a href="{{ url_for('user', user_id=c.user_id) }}" class="text-sm font-medium hover:text-blue-600">{{ c.user.username }}</a>
+                            <span class="text-xs text-gray-400">{{ c.created_at.strftime('%m/%d %H:%M') }}</span>
+                            {% if c.user_id == session.get("user_id") or current_user.role == 'developer' %}
+                            <form action="{{ url_for('delete_comment', comment_id=c.id) }}" method="post" class="ml-auto">
+                                <button type="submit" class="text-xs text-gray-400 hover:text-red-500">{{ t('delete') }}</button>
+                            </form>
+                            {% endif %}
+                        </div>
+                        <p class="text-sm whitespace-pre-wrap">{{ c.content }}</p>
+                        {% if c.image_url %}
+                        <img src="{{ c.image_url }}" alt="" class="mt-2 rounded-xl max-h-64 object-cover border border-gray-100 dark:border-zinc-700" loading="lazy" onerror="this.style.display='none'">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Comment Form with file upload -->
+        <div class="mt-6 bg-white dark:bg-zinc-800/80 rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-zinc-700/50">
+            <form action="{{ url_for('add_comment', post_id=post.id) }}" method="post" enctype="multipart/form-data" class="space-y-3">
+                <textarea name="content" placeholder="{{ t('write_comment') }}" required rows="2"
+                          class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-600 bg-gray-50 dark:bg-zinc-700 focus:ring-2 focus:ring-blue-500 outline-none text-sm resize-y"></textarea>
+                <div class="flex gap-3 items-center flex-wrap">
+                    <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 dark:border-zinc-600 bg-gray-50 dark:bg-zinc-700 text-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-600 transition-colors">
+                        📷 {{ t('upload_image') }}
+                        <input type="file" name="image" accept="image/*" class="hidden">
+                    </label>
+                    <span class="text-xs text-gray-400">or</span>
+                    <input type="url" name="image_url" placeholder="{{ t('image_url') }}"
+                           class="flex-1 min-w-0 px-3 py-2 rounded-xl border border-gray-200 dark:border-zinc-600 bg-gray-50 dark:bg-zinc-700 text-sm outline-none">
+                    <button type="submit" class="bg-blue-600 text-white px-5 py-2 rounded-xl text-sm font-medium hover:bg-blue-700 transition-colors shadow-md shadow-blue-600/20 flex-shrink-0">{{ t('comment_btn') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
