@@ -171,4 +171,4 @@ class Message(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now)
     sender = db.relationship("User", foreign_keys=[sender_id], backref="sent_messages")
     receiver = db.relationship("User", foreign_keys=[receiver_id], backref="received_messages")
-# updated: Reaction¥â¥Ç¥ë - ¤¤¤¤¤Í™CÄÜ
+# updated: Friend¥â¥Ç¥ë
