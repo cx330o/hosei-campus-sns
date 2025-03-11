@@ -710,4 +710,4 @@ with app.app_context():
 
 if __name__ == "__main__":
     socketio.run(app, debug=True, host="0.0.0.0", port=5000, allow_unsafe_werkzeug=True)
-# updated: ¥Õ¥ì¥ó¥É×·¼Ó?Ï÷³ý
+# updated: ¥æ©`¥¶©`—ÊË÷™CÄÜ

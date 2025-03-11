@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-6">{{ t('search_users') }}</h1>
+<form method="get" action="{{ url_for('search_users') }}" class="mb-6">
+    <div class="flex gap-3">
+        <input type="text" name="q" value="{{ query }}" placeholder="{{ t('search_placeholder') }}" autofocus
+               class="flex-1 px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-600 bg-white dark:bg-zinc-700 focus:ring-2 focus:ring-blue-500 outline-none">
+        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors">{{ t('search') }}</button>
+    </div>
+</form>
+{% if query and users|length == 0 %}
+<div class="text-center py-12 text-gray-400"><p>{{ t('no_results') }}</p></div>
+{% elif users %}
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+    {% for u in users %}
+    <a href="{{ url_for('user', user_id=u.id) }}" class="bg-white dark:bg-zinc-800/80 rounded-2xl p-4 text-center shadow-sm hover:shadow-md transition-all border border-gray-100 dark:border-zinc-700/50">
+        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full mx-auto mb-2 flex items-center justify-center text-white text-lg font-bold">{{ u.username[0]|upper }}</div>
+        <p class="font-medium text-sm truncate">{{ u.username }}</p>
+        <p class="text-xs text-gray-400 mt-1">
+            <span class="px-1.5 py-0.5 rounded-md {% if u.role == 'teacher' %}bg-green-100 text-green-600{% else %}bg-blue-100 text-blue-600{% endif %}">
+                {% if u.role == 'teacher' %}{{ t('teacher_role') }}{% else %}{{ t('student') }}{% endif %}
+            </span>
+        </p>
+        {% if u.department %}<p class="text-xs text-gray-400 mt-1 truncate">{{ u.department }}</p>{% endif %}
+    </a>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
