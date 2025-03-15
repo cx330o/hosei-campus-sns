@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+{% endblock %}
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <div class="flex items-center gap-3 mb-4">
+        <a href="{{ url_for('dm_list') }}" class="text-gray-400 hover:text-gray-600 text-xl">←</a>
+        <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold">{{ partner.username[0]|upper }}</div>
+        <div>
+            <p class="font-semibold">{{ partner.username }}</p>
+            {% if partner.department %}<p class="text-xs text-gray-400">{{ partner.department }}</p>{% endif %}
+        </div>
+        <a href="{{ url_for('user', user_id=partner.id) }}" class="ml-auto text-sm text-blue-600 hover:underline">{{ t('user_page') }}</a>
+    </div>
+
+    <!-- Messages -->
+    <div id="messages" class="space-y-3 mb-4 max-h-[60vh] overflow-y-auto scroll-smooth" style="min-height:200px">
+        {% for m in messages %}
+        <div class="flex {% if m.sender_id == current_user.id %}justify-end{% else %}justify-start{% endif %}">
+            <div class="max-w-[75%] px-4 py-2.5 rounded-2xl text-sm
+                {% if m.sender_id == current_user.id %}bg-blue-600 text-white rounded-br-md{% else %}bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 rounded-bl-md{% endif %}">
+                <p class="whitespace-pre-wrap">{{ m.content }}</p>
+                {% if m.image_url %}
+                <img src="{{ m.image_url }}" class="mt-2 rounded-lg max-h-48 object-cover" loading="lazy" onerror="this.style.display='none'">
+                {% endif %}
+                <p class="text-[10px] mt-1 {% if m.sender_id == current_user.id %}text-blue-200{% else %}text-gray-400{% endif %}">{{ m.created_at.strftime('%H:%M') }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Input -->
+    <div class="bg-white dark:bg-zinc-800/80 rounded-2xl p-3 shadow-sm border border-gray-100 dark:border-zinc-700/50">
+        <div class="flex gap-2">
+            <input type="text" id="msgInput" placeholder="{{ t('type_message') }}" autocomplete="off"
+                   class="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-600 bg-gray-50 dark:bg-zinc-700 outline-none text-sm">
+            <button id="sendBtn" class="bg-blue-600 text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-blue-700 transition-colors">{{ t('send_dm') }}</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const socket = io();
+const partnerId = "{{ partner.id }}";
+const myId = "{{ current_user.id }}";
+const msgBox = document.getElementById("messages");
+const msgInput = document.getElementById("msgInput");
+
+socket.emit("join", {});
+
+socket.on("new_message", function(data) {
+    if ((data.sender_id === partnerId && data.receiver_id === myId) ||
+        (data.sender_id === myId && data.receiver_id === partnerId)) {
+        const isMine = data.sender_id === myId;
+        const div = document.createElement("div");
+        div.className = "flex " + (isMine ? "justify-end" : "justify-start");
+        div.innerHTML = `<div class="max-w-[75%] px-4 py-2.5 rounded-2xl text-sm ${isMine ? 'bg-blue-600 text-white rounded-br-md' : 'bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 rounded-bl-md'}">
+            <p class="whitespace-pre-wrap">${data.content}</p>
+            ${data.image_url ? '<img src="'+data.image_url+'" class="mt-2 rounded-lg max-h-48 object-cover">' : ''}
+            <p class="text-[10px] mt-1 ${isMine ? 'text-blue-200' : 'text-gray-400'}">${data.created_at.slice(11,16)}</p>
+        </div>`;
+        msgBox.appendChild(div);
+        msgBox.scrollTop = msgBox.scrollHeight;
+    }
+});
+
+function sendMsg() {
+    const content = msgInput.value.trim();
+    if (!content) return;
+    socket.emit("send_message", {receiver_id: partnerId, content: content});
+    msgInput.value = "";
+}
+
+document.getElementById("sendBtn").addEventListener("click", sendMsg);
+msgInput.addEventListener("keydown", function(e) { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMsg(); } });
+
+// Scroll to bottom on load
+msgBox.scrollTop = msgBox.scrollHeight;
+</script>
+{% endblock %}
