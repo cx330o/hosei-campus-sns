@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-md mx-auto mt-6">
+    <div class="bg-white dark:bg-zinc-800/80 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-zinc-700/50">
+        <!-- Logo -->
+        <div class="flex justify-center mb-5">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shadow-lg
+                {% if role == 'student' %}bg-gradient-to-br from-orange-400 to-orange-600 shadow-orange-500/30
+                {% elif role == 'teacher' %}bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-emerald-500/30
+                {% else %}bg-gradient-to-br from-violet-400 to-violet-600 shadow-violet-500/30{% endif %}">
+                {% if role == 'student' %}🎓{% elif role == 'teacher' %}👨‍🏫{% else %}💻{% endif %}
+            </div>
+        </div>
+        <h1 class="text-2xl font-extrabold text-center mb-1">
+            {% if role == 'student' %}{{ t('student_login') }}{% elif role == 'teacher' %}{{ t('teacher_login') }}{% else %}{{ t('developer_login') }}{% endif %}
+        </h1>
+        <p class="text-gray-400 text-center text-sm mb-6">{{ t('login_prompt') }}</p>
+
+        <form method="post" action="{{ url_for('login_role', role=role) }}" class="space-y-4">
+            <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1.5">{{ t('username') }}</label>
+                <input type="text" name="username" placeholder="{{ t('username') }}" required
+                       class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-600 bg-gray-50 dark:bg-zinc-700/50 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1.5">{{ t('password') }}</label>
+                <input type="password" name="password" placeholder="{{ t('password') }}" required
+                       class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-600 bg-gray-50 dark:bg-zinc-700/50 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
+            </div>
+            <button type="submit"
+                    class="w-full text-white py-3 rounded-xl font-bold transition-all shadow-lg hover:opacity-90 hover:-translate-y-0.5
+                    {% if role == 'student' %}bg-gradient-to-r from-orange-500 to-orange-600 shadow-orange-500/30
+                    {% elif role == 'teacher' %}bg-gradient-to-r from-emerald-500 to-emerald-600 shadow-emerald-500/30
+                    {% else %}bg-gradient-to-r from-violet-500 to-violet-600 shadow-violet-500/30{% endif %}">
+                {{ t('login') }}
+            </button>
+        </form>
+
+        {% if role != 'developer' %}
+        <p class="text-center text-sm text-gray-400 mt-6">
+            {{ t('no_account') }}
+            <a href="{{ url_for('signup', role=role) }}" class="hosei-orange hover:underline font-medium">{{ t('here') }}</a>
+        </p>
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('login') }}" class="text-sm text-gray-400 hover:text-gray-600 transition-colors">← {{ t('back') }}</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
