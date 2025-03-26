@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-6">{{ t('schedule') }}</h1>
+
+{% set day_keys = ['mon','tue','wed','thu','fri','sat'] %}
+{% set day_vals = ['月','火','水','木','金','土'] %}
+
+{% for term, term_key, is_spring_check, is_autumn_check in [
+    (t('spring'), 'spring', true, none),
+    (t('autumn'), 'autumn', none, true)
+] %}
+<div class="bg-white dark:bg-zinc-800/80 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-700/50 mb-6 overflow-hidden">
+    <div class="px-5 py-3 bg-gradient-to-r {% if term_key == 'spring' %}from-pink-500/10 to-orange-500/10{% else %}from-amber-500/10 to-red-500/10{% endif %} border-b border-gray-100 dark:border-zinc-700/50">
+        <h2 class="font-bold text-lg">{{ term }}</h2>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead>
+                <tr class="border-b border-gray-100 dark:border-zinc-700/50">
+                    <th class="p-2 w-12"></th>
+                    {% for dk in day_keys %}
+                    <th class="p-2 font-medium text-gray-500 dark:text-gray-400">{{ t(dk) }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for time in range(1, 7) %}
+                <tr class="border-b border-gray-50 dark:border-zinc-700/30">
+                    <td class="p-2 text-center font-medium text-gray-400 text-xs">{{ time }}{{ t('period') }}</td>
+                    {% for idx in range(6) %}
+                    <td class="p-1.5 align-top min-w-[100px]">
+                        {% set day = day_vals[idx] %}
+                        {% for c in classes %}
+                        {% if c.time == time and c.day == day and
+                              ((term_key == 'spring' and c.is_spring) or (term_key == 'autumn' and c.is_autumn)) %}
+                        <a href="{{ url_for('class_detail', class_id=c.id) }}"
+                           class="block text-xs bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg p-1.5 mb-1 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors truncate">
+                            {{ c.name }}
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                        <a href="{{ url_for('classes', season=term_key, time=time, day=day, department=user.department) }}"
+                           class="block text-xs text-gray-400 hover:text-blue-500 text-center transition-colors">+</a>
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Intensive -->
+    <div class="px-5 py-3 border-t border-gray-100 dark:border-zinc-700/50">
+        <p class="text-xs font-medium text-gray-500 mb-2">{{ t('intensive') }}</p>
+        <div class="flex flex-wrap gap-2">
+            {% for c in classes %}
+            {% if c.time == -10 and
+                  ((term_key == 'spring' and c.is_spring) or (term_key == 'autumn' and c.is_autumn)) %}
+            <a href="{{ url_for('class_detail', class_id=c.id) }}"
+               class="text-xs bg-gray-100 dark:bg-zinc-700 px-3 py-1.5 rounded-lg hover:bg-gray-200 dark:hover:bg-zinc-600 transition-colors">
+                {{ c.name }}
+            </a>
+            {% endif %}
+            {% endfor %}
+            <a href="{{ url_for('classes', season=term_key, time=-10, department=user.department) }}"
+               class="text-xs text-gray-400 hover:text-blue-500 px-3 py-1.5 transition-colors">+ {{ t('add') }}</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<!-- Other -->
+<div class="bg-white dark:bg-zinc-800/80 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-700/50 mb-6 overflow-hidden">
+    <div class="px-5 py-3 bg-gray-50 dark:bg-zinc-700/30 border-b border-gray-100 dark:border-zinc-700/50">
+        <h2 class="font-bold text-lg">{{ t('other_term') }}</h2>
+    </div>
+    <div class="px-5 py-3">
+        <div class="flex flex-wrap gap-2">
+            {% for c in classes %}
+            {% if not c.is_spring and not c.is_autumn %}
+            <a href="{{ url_for('class_detail', class_id=c.id) }}"
+               class="text-xs bg-gray-100 dark:bg-zinc-700 px-3 py-1.5 rounded-lg hover:bg-gray-200 dark:hover:bg-zinc-600 transition-colors">
+                {{ c.name }}
+            </a>
+            {% endif %}
+            {% endfor %}
+            <a href="{{ url_for('classes', season='other', department=user.department) }}"
+               class="text-xs text-gray-400 hover:text-blue-500 px-3 py-1.5 transition-colors">+ {{ t('add') }}</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
