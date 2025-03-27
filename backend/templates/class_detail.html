@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <div class="bg-white dark:bg-zinc-800/80 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-700/50 overflow-hidden">
+        <div class="px-6 py-4 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-b border-gray-100 dark:border-zinc-700/50">
+            <h1 class="text-xl font-bold">{{ class_detail.name }}</h1>
+            <p class="text-sm text-gray-500 mt-1">{{ class_detail.code }} · {{ class_detail.department }}</p>
+        </div>
+        <div class="divide-y divide-gray-50 dark:divide-zinc-700/30">
+            {% set rows = [
+                (t('teacher'), class_detail.teacher),
+                (t('season_label'), class_detail.season),
+                (t('day_label'), class_detail.day),
+                (t('period_label'), t('intensive') if class_detail.time == -10 else ('?' if class_detail.time == -1 else class_detail.time)),
+                (t('classroom'), class_detail.place),
+                (t('credits'), '?' if class_detail.unit == -1 else class_detail.unit),
+                (t('grade_min'), '?' if class_detail.grade_min == -1 else class_detail.grade_min),
+                (t('grade_max'), '?' if class_detail.grade_max == -1 else class_detail.grade_max),
+                (t('notes'), class_detail.note),
+            ] %}
+            {% for label, value in rows %}
+            <div class="flex px-6 py-3">
+                <span class="w-32 flex-shrink-0 text-sm text-gray-500 dark:text-gray-400">{{ label }}</span>
+                <span class="text-sm">{{ value }}</span>
+            </div>
+            {% endfor %}
+            {% if class_detail.url and class_detail.url != 'urlなし' %}
+            <div class="flex px-6 py-3">
+                <span class="w-32 flex-shrink-0 text-sm text-gray-500 dark:text-gray-400">{{ t('syllabus') }}</span>
+                <a href="{{ class_detail.url }}" target="_blank" class="text-sm text-blue-600 hover:underline">{{ t('syllabus') }} ↗</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="flex gap-3 mt-4">
+        {% if current_user.is_authenticated %}
+            {% if class_entry == None %}
+            <a href="{{ url_for('class_add', class_id=class_detail.id) }}"
+               class="bg-blue-600 text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-blue-700 transition-colors shadow-md shadow-blue-600/20">
+                {{ t('register_class') }}
+            </a>
+            {% else %}
+            <a href="{{ url_for('class_delete', class_id=class_detail.id) }}"
+               class="bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors">
+                {{ t('unregister_class') }}
+            </a>
+            {% endif %}
+        {% endif %}
+        <a href="{{ url_for('schedule') }}"
+           class="bg-gray-100 dark:bg-zinc-700 px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-gray-200 dark:hover:bg-zinc-600 transition-colors">
+            ← {{ t('back_to_schedule') }}
+        </a>
+    </div>
+</div>
+{% endblock %}
