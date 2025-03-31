@@ -62,4 +62,4 @@ const ichigayaConfig: CampusConfig = {
 };
 
 export default ichigayaConfig;
-// updated: ÊÐ¥ö¹È¤Îñk¥Ç©`¥¿
+// updated: 3¥­¥ã¥ó¥Ñ¥¹¤Î¥Æ©`¥ÞÔO¶¨
