@@ -232,4 +232,4 @@ class TestMisc:
         login(client, "student1", "student")
         r = client.post("/api/upload")
         assert r.status_code == 400
-# updated: Í¶¸åCRUD¤Î¥Æ¥¹¥È
+# updated: DM™CÄÜ¤Î¥Æ¥¹¥È
