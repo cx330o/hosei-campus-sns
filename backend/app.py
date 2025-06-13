@@ -710,4 +710,4 @@ with app.app_context():
 
 if __name__ == "__main__":
     socketio.run(app, debug=True, host="0.0.0.0", port=5000, allow_unsafe_werkzeug=True)
-# updated: 春学期/秋学期フィルタリング
+# updated: 管理者 - 一括削除
