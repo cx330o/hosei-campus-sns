@@ -364,4 +364,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-# updated: seed.py - DM会話生成
+# updated: seed.py - 4言語DM生成
