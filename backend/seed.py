@@ -364,4 +364,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-# updated: seed.py - 4言語DM生成
+# updated: seed.py - コメント生成改善
