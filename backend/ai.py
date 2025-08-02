@@ -168,4 +168,4 @@ def extract_search_keywords(query: str) -> list[str]:
         return json.loads(response.choices[0].message.content.strip())
     except Exception:
         return [query]
-# updated: AI投稿要約機能
+# updated: AI要約 - 多言語プロンプト
