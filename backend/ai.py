@@ -168,4 +168,4 @@ def extract_search_keywords(query: str) -> list[str]:
         return json.loads(response.choices[0].message.content.strip())
     except Exception:
         return [query]
-# updated: ¥»¥Þ¥ó¥Æ¥£¥Ã¥¯—ÊË÷ - ¥­©`¥ï©`¥É³é³ö
+# updated: Groq API¥ì©`¥ÈÖÆÏÞ¤Î¥Ï¥ó¥É¥ê¥ó¥°
