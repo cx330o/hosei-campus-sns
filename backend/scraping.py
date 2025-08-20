@@ -159,4 +159,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-# updated: シラバススクレイピング - 全14学部
+# updated: スクレイピング - エラーハンドリング改善
