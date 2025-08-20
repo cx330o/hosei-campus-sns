@@ -159,4 +159,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-# updated: スクレイピング - エラーハンドリング改善
+# updated: スクレイピング結果のExcel出力
