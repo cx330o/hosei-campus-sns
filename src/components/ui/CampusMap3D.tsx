@@ -247,4 +247,4 @@ export default function CampusMap3D({ className }: CampusMap3DProps) {
     </div>
   );
 }
-// updated: 3Dе▐е├е╫ - ╜и╬яете╟еы┼ф╓├
+// updated: 3Dе▐е├е╫ - елесеще│еєе╚еэй`еы
