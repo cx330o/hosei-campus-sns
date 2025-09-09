@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  # Flask SNS backend
+  sns:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/instance:/app/instance
+      - ./backend/static/uploads:/app/static/uploads
+    environment:
+      - FLASK_ENV=production
+      - SECRET_KEY=${SECRET_KEY:-change-this-in-production}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+    restart: unless-stopped
+
+  # Nginx serves the React frontend + proxies /sns to Flask
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./dist:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - sns
+    restart: unless-stopped
