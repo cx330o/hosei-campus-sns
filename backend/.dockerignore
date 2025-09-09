@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.git/
+.gitignore
+instance/*.db
+.env
+.venv/
+venv/
+*.xlsx
+.DS_Store
