@@ -86,4 +86,4 @@ export default defineConfig({
   },
 
 })
-// updated: ¥ª¥Õ¥é¥¤¥ó¥Õ¥©©`¥ë¥Ð¥Ã¥¯
+// updated: vite-plugin-image-optimizerŒ§Èë
