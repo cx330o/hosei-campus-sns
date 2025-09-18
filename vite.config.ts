@@ -86,4 +86,4 @@ export default defineConfig({
   },
 
 })
-// updated: vite-plugin-image-optimizerŒ§Èë
+// updated: PWA Service Worker¸ÄÉÆ
