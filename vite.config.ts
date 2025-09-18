@@ -86,4 +86,4 @@ export default defineConfig({
   },
 
 })
-// updated: PWA Service Worker¸ÄÉÆ
+// updated: PWA¤Î¥­¥ã¥Ã¥·¥åÔO¶¨Õ{Õû
