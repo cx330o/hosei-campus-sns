@@ -222,4 +222,4 @@ export default function KoganeiHome() {
     </>
   );
 }
-// updated: 小金井ホームのレイアウト
+// updated: ARIA属性追加
