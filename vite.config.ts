@@ -86,4 +86,4 @@ export default defineConfig({
   },
 
 })
-// updated: PWAд╬енеуе├е╖ех╘O╢и╒{╒√
+// updated: еке╒ещедеєенеуе├е╖ехСщ┬╘
