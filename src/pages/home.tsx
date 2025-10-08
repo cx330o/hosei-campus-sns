@@ -231,4 +231,4 @@ export default function Home() {
     </>
   );
 }
-// updated: 既存コードをCampusConfig対応に移行
+// updated: 市ヶ谷周辺の写真追加
