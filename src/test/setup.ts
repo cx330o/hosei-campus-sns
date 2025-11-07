@@ -1,2 +1,2 @@
 import '@testing-library/jest-dom';
-// updated: 時刻表計算の境界値テスト
+// updated: 祝日判定のテスト
