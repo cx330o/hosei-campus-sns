@@ -140,4 +140,4 @@ export const stationSchema = StationIdSchema;
 export const stateSchema = UserStateSchema;
 export const ekitanSchema = EkitanDataSchema;
 export const BusSchema = BusWithDateSchema;
-// updated: 提携店舗ページ?データ構造
+// updated: 年末コード整理
