@@ -89,4 +89,4 @@ const App = () => {
 };
 
 export default App;
-// updated: LazyFallback•Ì©`•«•£•Û•∞ª≠√Ê
+// updated: App.tsx§Œ•Î©`•∆•£•Û•∞’˚¿Ì
