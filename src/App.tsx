@@ -89,4 +89,4 @@ const App = () => {
 };
 
 export default App;
-// updated: 学期末コード整理
+// updated: React 19の破壊的変更対応
