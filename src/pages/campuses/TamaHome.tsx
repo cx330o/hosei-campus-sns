@@ -281,4 +281,4 @@ export default function TamaHome() {
     </>
   );
 }
-// updated: ¥­©`¥Ü©`¥É¥Ê¥Ó¥²©`¥·¥ç¥ó×·¼Ó
+// updated: React 19¤ÎuseRef‰ä¸üŒê
