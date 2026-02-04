@@ -86,4 +86,4 @@ export default defineConfig({
   },
 
 })
-// updated: еке╒ещедеєенеуе├е╖ехСщ┬╘
+// updated: Vite 6 еве├е╫е░еьй`е╔
