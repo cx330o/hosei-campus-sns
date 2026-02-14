@@ -83,4 +83,4 @@ export interface CampusConfig {
   /** Google Analytics tracking ID */
   gaTrackingId: string;
 }
-// updated: CampusConfig - transportMode×·¼Ó
+// updated: CampusConfig - hasDirectionSwap×·¼Ó
