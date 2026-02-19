@@ -89,4 +89,4 @@ const App = () => {
 };
 
 export default App;
-// updated: ¥ë©`¥Æ¥£¥ó¥°¤ÎNavigateÐÞÕý
+// updated: GA4¥¤¥Ù¥ó¥È¥È¥é¥Ã¥­¥ó¥°
