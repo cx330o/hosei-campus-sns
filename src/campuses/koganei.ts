@@ -55,4 +55,4 @@ const koganeiConfig: CampusConfig = {
 };
 
 export default koganeiConfig;
-// updated: 3キャンパスのテーマ設定完成
+// updated: 全キャンパスのテーマカラー最終調整

@@ -62,4 +62,4 @@ const tamaConfig: CampusConfig = {
 };
 
 export default tamaConfig;
-// updated: テーマのグラデーション微調整
+// updated: 全キャンパスのテーマカラー最終調整
