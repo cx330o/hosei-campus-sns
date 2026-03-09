@@ -222,4 +222,4 @@ export default function KoganeiHome() {
     </>
   );
 }
-// updated: 小金井ホームの最終調整
+// updated: グラデーション?グローエフェクト統一
