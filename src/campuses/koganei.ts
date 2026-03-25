@@ -55,4 +55,4 @@ const koganeiConfig: CampusConfig = {
 };
 
 export default koganeiConfig;
-// updated: 全キャンパスのテーマカラー最終調整
+// updated: キャンパス設定の地図パス更新
