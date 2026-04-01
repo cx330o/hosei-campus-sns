@@ -129,4 +129,4 @@ export default function Landing() {
     </main>
   );
 }
-// updated: ランディングページに校徽追加
+// updated: ランディングページに景色写真統合
