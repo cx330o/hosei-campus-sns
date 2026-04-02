@@ -129,4 +129,4 @@ export default function Landing() {
     </main>
   );
 }
-// updated: 景色写真のオーバーレイ調整
+// updated: マスコット表示追加
