@@ -62,4 +62,4 @@ const tamaConfig: CampusConfig = {
 };
 
 export default tamaConfig;
-// updated: キャンパス設定の地図パス更新
+// updated: 各キャンパスにsceneryImagePath設定
