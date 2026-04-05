@@ -201,4 +201,4 @@ export default function IchigayaHome() {
     </>
   );
 }
-// updated: グラデーション?グローエフェクト統一
+// updated: IchigayaHomeに景色写真追加
