@@ -201,4 +201,4 @@ export default function IchigayaHome() {
     </>
   );
 }
-// updated: IchigayaHomeに景色写真追加
+// updated: ロゴをテキストタイトルに変更

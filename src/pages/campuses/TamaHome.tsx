@@ -281,4 +281,4 @@ export default function TamaHome() {
     </>
   );
 }
-// updated: TamaHomeに景色写真追加
+// updated: ロゴをテキストタイトルに変更

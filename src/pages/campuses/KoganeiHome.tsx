@@ -222,4 +222,4 @@ export default function KoganeiHome() {
     </>
   );
 }
-// updated: KoganeiHomeに景色写真追加
+// updated: ロゴをテキストタイトルに変更
