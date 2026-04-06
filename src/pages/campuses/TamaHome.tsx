@@ -281,4 +281,4 @@ export default function TamaHome() {
     </>
   );
 }
-// updated: グラデーション?グローエフェクト統一
+// updated: TamaHomeに景色写真追加
