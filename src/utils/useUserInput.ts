@@ -38,4 +38,4 @@ export default function useUserInput() {
 
   return { state, setState }
 }
-// updated: キャンパス切替のステート初期化バグ修正
+// updated: useUserInputのキャンパス別デフォルト駅修正
