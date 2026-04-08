@@ -146,4 +146,4 @@ export default function TechPage() {
     </div>
   );
 }
-// updated: テックページのバージョン情報更新
+// updated: テックページの最終調整
