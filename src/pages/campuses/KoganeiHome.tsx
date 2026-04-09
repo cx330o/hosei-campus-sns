@@ -222,4 +222,4 @@ export default function KoganeiHome() {
     </>
   );
 }
-// updated: ¥í¥´¤ò¥Æ¥­¥¹¥È¥¿¥¤¥È¥ë¤Ë‰ä¸ü
+// updated: KoganeiHome¤Î¥ê¥ó¥¯¥Ü¥¿¥ó¸ÄÉÆ
