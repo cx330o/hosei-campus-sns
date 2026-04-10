@@ -10,6 +10,24 @@
         <div class="border-t border-gray-100 dark:border-zinc-700 pt-4">
             <p class="whitespace-pre-wrap leading-relaxed">{{ post.full_content }}</p>
         </div>
+
+        <!-- AI Features -->
+        <div class="border-t border-gray-100 dark:border-zinc-700 mt-4 pt-4">
+            <div class="flex flex-wrap gap-2">
+                <button onclick="aiSummarize()" id="btn-summarize"
+                    class="flex items-center gap-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-4 py-2 rounded-xl text-sm font-medium hover:opacity-90 transition-all shadow-md shadow-blue-500/20">
+                    🤖 AI要約
+                </button>
+                <button onclick="aiTranslate('ja')" class="flex items-center gap-1.5 bg-gray-100 dark:bg-zinc-700 px-3 py-2 rounded-xl text-sm hover:bg-gray-200 dark:hover:bg-zinc-600 transition-colors">🇯🇵 日本語</button>
+                <button onclick="aiTranslate('en')" class="flex items-center gap-1.5 bg-gray-100 dark:bg-zinc-700 px-3 py-2 rounded-xl text-sm hover:bg-gray-200 dark:hover:bg-zinc-600 transition-colors">🇺🇸 English</button>
+                <button onclick="aiTranslate('zh')" class="flex items-center gap-1.5 bg-gray-100 dark:bg-zinc-700 px-3 py-2 rounded-xl text-sm hover:bg-gray-200 dark:hover:bg-zinc-600 transition-colors">🇨🇳 中文</button>
+                <button onclick="aiTranslate('ko')" class="flex items-center gap-1.5 bg-gray-100 dark:bg-zinc-700 px-3 py-2 rounded-xl text-sm hover:bg-gray-200 dark:hover:bg-zinc-600 transition-colors">🇰🇷 한국어</button>
+            </div>
+            <div id="ai-result" class="hidden mt-3 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800">
+                <p class="text-xs text-blue-500 font-medium mb-1" id="ai-result-label"></p>
+                <p class="text-sm" id="ai-result-text"></p>
+            </div>
+        </div>
     </div>
     <div class="flex gap-3 mt-4">
         <a href="{{ url_for('user', user_id=post.user_id) }}" class="bg-gray-100 dark:bg-zinc-700 px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-200 dark:hover:bg-zinc-600 transition-colors">{{ t('user_page') }}</a>
@@ -71,4 +89,51 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const postContent = {{ post.full_content|tojson }};
+
+async function aiSummarize() {
+    const btn = document.getElementById('btn-summarize');
+    btn.textContent = '⏳ 処理中...';
+    btn.disabled = true;
+    try {
+        const res = await fetch('/api/ai/summarize', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: postContent }),
+        });
+        const data = await res.json();
+        showResult('🤖 AI要約', data.summary || 'エラーが発生しました');
+    } catch (e) {
+        showResult('エラー', 'AI機能に接続できませんでした');
+    }
+    btn.textContent = '🤖 AI要約';
+    btn.disabled = false;
+}
+
+async function aiTranslate(lang) {
+    const labels = { ja: '🇯🇵 日本語翻訳', en: '🇺🇸 English Translation', zh: '🇨🇳 中文翻译', ko: '🇰🇷 한국어 번역' };
+    try {
+        const res = await fetch('/api/ai/translate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: postContent, target_lang: lang }),
+        });
+        const data = await res.json();
+        showResult(labels[lang], data.translation || 'エラーが発生しました');
+    } catch (e) {
+        showResult('エラー', 'AI機能に接続できませんでした');
+    }
+}
+
+function showResult(label, text) {
+    const el = document.getElementById('ai-result');
+    document.getElementById('ai-result-label').textContent = label;
+    document.getElementById('ai-result-text').textContent = text;
+    el.classList.remove('hidden');
+}
+</script>
 {% endblock %}

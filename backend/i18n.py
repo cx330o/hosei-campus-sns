@@ -7,6 +7,7 @@ TRANSLATIONS = {
     "friends": {"ja": "フレンド", "en": "Friends", "zh": "好友", "ko": "친구"},
     "schedule": {"ja": "時間割", "en": "Schedule", "zh": "课程表", "ko": "시간표"},
     "about_me": {"ja": "マイページ", "en": "My Page", "zh": "我的页面", "ko": "마이페이지"},
+    "ai_chat": {"ja": "AI", "en": "AI", "zh": "AI", "ko": "AI"},
     "login": {"ja": "ログイン", "en": "Login", "zh": "登录", "ko": "로그인"},
     "logout": {"ja": "ログアウト", "en": "Logout", "zh": "退出", "ko": "로그아웃"},
     "signup": {"ja": "新規登録", "en": "Sign Up", "zh": "注册", "ko": "회원가입"},
