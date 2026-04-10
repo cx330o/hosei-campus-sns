@@ -89,4 +89,4 @@ const App = () => {
 };
 
 export default App;
-// updated: lint警告の修正
+// updated: 最終コード整理

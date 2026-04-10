@@ -140,4 +140,4 @@ export const stationSchema = StationIdSchema;
 export const stateSchema = UserStateSchema;
 export const ekitanSchema = EkitanDataSchema;
 export const BusSchema = BusWithDateSchema;
-// updated: Zodスキーマの後方互換エイリアス
+// updated: 最終コード整理

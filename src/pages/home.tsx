@@ -231,4 +231,4 @@ export default function Home() {
     </>
   );
 }
-// updated: 不要コード削除
+// updated: 最終コード整理
